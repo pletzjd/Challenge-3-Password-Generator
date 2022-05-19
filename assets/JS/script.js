@@ -43,16 +43,16 @@ function generatePassword(){
 
   let chosenCharacterArray = [];
   if (containsLowercase){
-    chosenCharacterArray.push(0);
+    chosenCharacterArray.push("Lowercase");
   }
   if (containsUppercase){
-    chosenCharacterArray.push(1);
+    chosenCharacterArray.push("Uppercase");
   }
   if (containsNumbers){
-    chosenCharacterArray.push(2);
+    chosenCharacterArray.push("Numbers");
   }
   if (containsSpecialCharacters){
-    chosenCharacterArray.push(3);
+    chosenCharacterArray.push("Special Characters");
   }
 
   let characterSelector = 0
@@ -63,13 +63,13 @@ function generatePassword(){
     
     characterSelector = chosenCharacterArray[Math.floor(Math.random()*chosenCharacterArray.length)];
 
-    if(characterSelector === 0){
+    if(characterSelector === "Lowercase"){
       randomPassword = randomPassword + lowerCase[Math.floor(Math.random()*lowerCase.length)];
-    }else if(characterSelector === 1){
+    }else if(characterSelector === "Uppercase"){
       randomPassword = randomPassword + upperCase[Math.floor(Math.random()*upperCase.length)];
-    }else if(characterSelector === 2){
+    }else if(characterSelector === "Numbers"){
       randomPassword = randomPassword + numbers[Math.floor(Math.random()*numbers.length)];
-    }else if (characterSelector === 3){
+    }else if (characterSelector === "Special Characters"){
       randomPassword = randomPassword + specialCharacters[Math.floor(Math.random()*specialCharacters.length)];
     }
   }
