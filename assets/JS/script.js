@@ -65,6 +65,7 @@ function generatePassword(){
 
   
   while(retry){
+    randomPassword = ""
     for(let i = 0; i < passwordLength; i++){
     
       characterSelector = chosenCharacterArray[Math.floor(Math.random()*chosenCharacterArray.length)];
@@ -83,11 +84,9 @@ function generatePassword(){
         pwContainsSpecialCharacter = true;
       }
     }
+
     retry = (!((containsLowercase === pwContainsLowercase)&&(containsUppercase===pwContainsUppercase)&&(containsNumbers===pwContainsNumber)&&(containsSpecialCharacters===pwContainsSpecialCharacter)));
-    if(retry){
-      alert("Loop repeated");
-      randomPassword = ""
-    }
+    
   }
 
 
