@@ -41,51 +41,35 @@ function generatePassword(){
     }
   }
 
-  let totalCharacterTypes = 0;
+  let chosenCharacterArray = [];
   if (containsLowercase){
-    totalCharacterTypes++;
+    chosenCharacterArray.push(0);
   }
   if (containsUppercase){
-    totalCharacterTypes++;
+    chosenCharacterArray.push(1);
   }
   if (containsNumbers){
-    totalCharacterTypes++
+    chosenCharacterArray.push(2);
   }
   if (containsSpecialCharacters){
-    totalCharacterTypes++
+    chosenCharacterArray.push(3);
   }
 
-  let count = 0;
   let characterSelector = 0
 
   
 
-  for(let i = 0; i < passwordLength; i++ ){
+  for(let i = 0; i < passwordLength; i++){
     
-    characterSelector = Math.floor(Math.random()*totalCharacterTypes);
-    count = 0
+    characterSelector = chosenCharacterArray[Math.floor(Math.random()*chosenCharacterArray.length)];
 
-    if(containsLowercase && count === characterSelector){
+    if(characterSelector === 0){
       randomPassword = randomPassword + lowerCase[Math.floor(Math.random()*lowerCase.length)];
-      count++;
-    }else if(containsLowercase){
-      count++
-    }
-
-    if(containsUppercase && count === characterSelector){
+    }else if(characterSelector === 1){
       randomPassword = randomPassword + upperCase[Math.floor(Math.random()*upperCase.length)];
-      count++
-    }else if(containsUppercase){
-      count++
-    }
-
-    if(containsNumbers && count === characterSelector){
+    }else if(characterSelector === 2){
       randomPassword = randomPassword + numbers[Math.floor(Math.random()*numbers.length)];
-      count++
-    }else if (containsNumbers){
-      count++
-    }
-    if(containsSpecialCharacters && count === characterSelector){
+    }else if (characterSelector === 3){
       randomPassword = randomPassword + specialCharacters[Math.floor(Math.random()*specialCharacters.length)];
     }
   }
