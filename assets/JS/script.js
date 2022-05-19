@@ -66,6 +66,11 @@ function generatePassword(){
   
   while(retry){
     randomPassword = ""
+    pwContainsLowercase = false;
+    pwContainsUppercase = false;
+    pwContainsNumber = false;
+    pwContainsSpecialCharacter = false;
+    
     for(let i = 0; i < passwordLength; i++){
     
       characterSelector = chosenCharacterArray[Math.floor(Math.random()*chosenCharacterArray.length)];
