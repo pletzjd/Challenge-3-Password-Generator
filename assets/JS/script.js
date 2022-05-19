@@ -57,22 +57,39 @@ function generatePassword(){
 
   let characterSelector = 0
 
+  let pwContainsLowercase = false;
+  let pwContainsUppercase = false;
+  let pwContainsNumber = false;
+  let pwContainsSpecialCharacter = false;
+  let retry = true;
+
   
-
-  for(let i = 0; i < passwordLength; i++){
+  while(retry){
+    for(let i = 0; i < passwordLength; i++){
     
-    characterSelector = chosenCharacterArray[Math.floor(Math.random()*chosenCharacterArray.length)];
+      characterSelector = chosenCharacterArray[Math.floor(Math.random()*chosenCharacterArray.length)];
 
-    if(characterSelector === "Lowercase"){
-      randomPassword = randomPassword + lowerCase[Math.floor(Math.random()*lowerCase.length)];
-    }else if(characterSelector === "Uppercase"){
-      randomPassword = randomPassword + upperCase[Math.floor(Math.random()*upperCase.length)];
-    }else if(characterSelector === "Numbers"){
-      randomPassword = randomPassword + numbers[Math.floor(Math.random()*numbers.length)];
-    }else if (characterSelector === "Special Characters"){
-      randomPassword = randomPassword + specialCharacters[Math.floor(Math.random()*specialCharacters.length)];
+      if(characterSelector === "Lowercase"){
+        randomPassword = randomPassword + lowerCase[Math.floor(Math.random()*lowerCase.length)];
+        pwContainsLowercase = true;
+      }else if(characterSelector === "Uppercase"){
+        randomPassword = randomPassword + upperCase[Math.floor(Math.random()*upperCase.length)];
+        pwContainsUppercase = true;
+      }else if(characterSelector === "Numbers"){
+        randomPassword = randomPassword + numbers[Math.floor(Math.random()*numbers.length)];
+        pwContainsNumber = true;
+      }else if (characterSelector === "Special Characters"){
+        randomPassword = randomPassword + specialCharacters[Math.floor(Math.random()*specialCharacters.length)];
+        pwContainsSpecialCharacter = true;
+      }
+    }
+    retry = (!((containsLowercase === pwContainsLowercase)&&(containsUppercase===pwContainsUppercase)&&(containsNumbers===pwContainsNumber)&&(containsSpecialCharacters===pwContainsSpecialCharacter)));
+    if(retry){
+      alert("Loop repeated");
+      randomPassword = ""
     }
   }
+
 
   return randomPassword
 }
