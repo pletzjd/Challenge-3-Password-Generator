@@ -1,7 +1,12 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
+let lowerCase = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
+let upperCase = ['A','B','C','D','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
+let numbers = ['0','1','2','3','4','5','6','7','8','9'];
+let specialCharacters = [' ','!','"','#','$','%','&',"'",'(',')','*','+',',','-','.','/',':',';','<','=','>','?','@','[','\\',']','^','_','`','{','}','|','~'];
 
 function generatePassword(){
+  let randomPassword = "";
   let passwordLength = 0;
   
   while (passwordLength <= 7 || passwordLength >= 129){
@@ -36,9 +41,55 @@ function generatePassword(){
     }
   }
 
+  let totalCharacterTypes = 0;
+  if (containsLowercase){
+    totalCharacterTypes++;
+  }
+  if (containsUppercase){
+    totalCharacterTypes++;
+  }
+  if (containsNumbers){
+    totalCharacterTypes++
+  }
+  if (containsSpecialCharacters){
+    totalCharacterTypes++
+  }
+
+  let count = 0;
+  let characterSelector = 0
+
   
 
-  let randomPassword = passwordLength;
+  for(let i = 0; i < passwordLength; i++ ){
+    
+    characterSelector = Math.floor(Math.random()*totalCharacterTypes);
+    count = 0
+
+    if(containsLowercase && count === characterSelector){
+      randomPassword = randomPassword + lowerCase[Math.floor(Math.random()*lowerCase.length)];
+      count++;
+    }else if(containsLowercase){
+      count++
+    }
+
+    if(containsUppercase && count === characterSelector){
+      randomPassword = randomPassword + upperCase[Math.floor(Math.random()*upperCase.length)];
+      count++
+    }else if(containsUppercase){
+      count++
+    }
+
+    if(containsNumbers && count === characterSelector){
+      randomPassword = randomPassword + numbers[Math.floor(Math.random()*numbers.length)];
+      count++
+    }else if (containsNumbers){
+      count++
+    }
+    if(containsSpecialCharacters && count === characterSelector){
+      randomPassword = randomPassword + specialCharacters[Math.floor(Math.random()*specialCharacters.length)];
+    }
+  }
+
   return randomPassword
 }
 
